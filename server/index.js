@@ -1,13 +1,25 @@
 const express = require("express")
 const cors =require("cors")
-const app = express()
+const mongoose =require("mongoose");
+const userRoute = require("./routes/userRoute.js")
 
+const app = express();
+require("dotenv").config()
 app.use(express.json())
 app.use(cors())
+app.use("/api/", userRoute);
+
+app.get("/",(req,res)=> {
+    res.send("Welcome to my chat app API !")
+});
 
 const port = process.env.PORT || 5000;
+const uri = process.env.ATLAS_URI;
 app.listen(port,(req,res) => {
     console.log(`Server running on port : ${port}`) 
 });
 
-
+mongoose.connect(uri,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+}).then(()=> console.log("MongoDB connection established ")).catch((error)=> console.log("MongoDB connection failed : ",error.message));
