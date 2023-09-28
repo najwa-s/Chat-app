@@ -14,7 +14,7 @@ export const postRequest = async(url,body) => {
 
     if(!response.ok){
         let message;
-        if(data.message){
+        if(data?.message){
             message=data.message
         }else{
             message = data

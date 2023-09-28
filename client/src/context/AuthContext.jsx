@@ -32,10 +32,7 @@ export const AuthContextProvider =( {children})=>{
             return setRegisterError(response);
         }
 
-        
-
-
-        localStorage.setItem('User',JSON.stringify(response))
+        localStorage.setItem('User',JSON.stringify(response));
         setUser(response);
     
         } ,[]);
@@ -45,6 +42,8 @@ export const AuthContextProvider =( {children})=>{
         user,
         registerInfo,
         updateRegisterInfo,
+        registerUser,
+        registerError,
         }}>
         {children}
     </AuthContext.Provider>;
