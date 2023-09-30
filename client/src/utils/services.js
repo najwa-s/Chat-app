@@ -1,16 +1,18 @@
-export const baseUrl ="http://localhost:5000/users"
+export const baseUrl ="http://127.0.0.1:5000/api"
 
-export const postRequest = async(url,body) => {
-    const  response = await fetch(url,{
+export const postRequest = async (url,body) => {
+    console.log("body",body);
+    console.log(url)
+    const response = await fetch(url,{
         method:"POST",
         headers:{
-            "Context-Type":"application/json"
+            "Content-Type":"application/json",
         },
-        body,
+        body
     });
 
-    const data = await response.json();
 
+    const data = await response.json();
 
     if(!response.ok){
         let message;
@@ -20,7 +22,7 @@ export const postRequest = async(url,body) => {
             message = data
         }
 
-        return {error:true,message}
+        return {error:true, message}
     }
 
 
