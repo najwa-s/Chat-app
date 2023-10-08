@@ -9,7 +9,7 @@ require("dotenv").config()
 app.use(express.json())
 app.use(cors())
 app.use("/api/users", userRoute);
-app.use("/api/chats",chatRoute);
+app.use("/api/chats", chatRoute);
 
 // app.get("/",(req,res)=> {
 //     res.send("Welcome to my chat app API !")

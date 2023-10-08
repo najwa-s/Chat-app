@@ -2,7 +2,7 @@ const chatModel = require("../models/chatModel")
 
 
 const createChat = async(req,res) => {
-    const {firstId,secondId} = req.body;
+    const {firstId,secondId} = req.body
 
     try{
         const chat = await chatModel.findOne({
@@ -29,12 +29,12 @@ const createChat = async(req,res) => {
 };
 
 const findUserChats  = async (req,res)=> {
-    const userId = req.params.userId;
+    const userId = req.params.userId
 
     try{
         const chats = await chatModel.find({
-            members:{$in: [userId]}
-        })
+            members: {$in: [userId]},
+        });
 
         res.status(200).json(chats);
 
@@ -48,7 +48,7 @@ const findChat  = async (req,res)=> {
     const {firstId,secondId} = req.params;
 
     try{
-        const chat = await chatModel.find({
+        const chat = await chatModel.findOne({
             members:{$all: [firstId,secondId]},
         })
 
